@@ -42,3 +42,15 @@ After: 16625 = 0x40F1
 Assuming start @ 0x40ff, 0th element at 0x40ff, 1st at 0x40fe, 2nd at 0x40fd, 3rd at 0x40fc
 given first element stored at highest memory address. If flipped, 0th is 0x40e0, 1st 0x40e1,
 2nd 0x40e2, 3rd 0x40e3
+
+### L3: What happens if we do not return memory
+
+If we don't reset the stack pointer will result in subroutines returning back to the wrong address after execution.
+
+If we don't deallocate memory our stack will continue to grow until it will collide with other content stored in RAM.
+
+### L4: Need to store values in allocated array?
+
+If we only need the values 'inside' the subroutine, locally, we do not. However, if we want to access the values
+in another subroutine - i.e., other parts of the program, we would need to store it somewhere. In the current implementation,
+it will be overwritten by another subroutine allocating the same amount of bytes.

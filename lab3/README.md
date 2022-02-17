@@ -54,3 +54,24 @@ If we don't deallocate memory our stack will continue to grow until it will coll
 If we only need the values 'inside' the subroutine, locally, we do not. However, if we want to access the values
 in another subroutine - i.e., other parts of the program, we would need to store it somewhere. In the current implementation,
 it will be overwritten by another subroutine allocating the same amount of bytes.
+
+### HA8: How do we declare subroutine in assembly?
+
+Like normal > 
+
+subroutine:
+	;prologue
+	;body
+	;epilogue
+
+but on top of program we add >
+.global subroutine
+
+thus allowing our c-program to "see" it.
+
+### HA9: How are arguments passed and returned?
+
+Broadly speaking, using registers.
+
+Specifically, arguments are passed using registers 25-8, with different rules regarding their allowed use.
+When returning values the registers r24 and r25 is used, with least significant placed in r24.

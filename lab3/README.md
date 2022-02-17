@@ -27,3 +27,18 @@ See start in SanityCheck.asm
 
 To create arbitrary delays, use countDelay.c and change global double delayTime. Limitation is number of registers
 used, in this case 3. Max delay becomes what can be generated using 255 as delay constant, roughly yielding a delay of 4.16s
+
+### HA6 How to allocate 10 ints
+
+See DynamicMemAlloc.asm, subroutine allocate_10
+
+### L2 Value of stack opinter after alloc
+
+Before: 16635 = 0x40FB
+After: 16625 = 0x40F1
+
+### H7 Where is value of index 3 if malloc array ending at 0x40e0
+
+Assuming start @ 0x40ff, 0th element at 0x40ff, 1st at 0x40fe, 2nd at 0x40fd, 3rd at 0x40fc
+given first element stored at highest memory address. If flipped, 0th is 0x40e0, 1st 0x40e1,
+2nd 0x40e2, 3rd 0x40e3

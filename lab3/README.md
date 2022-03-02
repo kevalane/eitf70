@@ -75,3 +75,19 @@ Broadly speaking, using registers.
 
 Specifically, arguments are passed using registers 25-8, with different rules regarding their allowed use.
 When returning values the registers r24 and r25 is used, with least significant placed in r24.
+
+### L5: led_on(); what is pushed to stack?
+
+With my implementation, nothing is pushed to the stack. I'm just using r24,
+the register for parameters and return values. However, the stackpointer is
+decreashed by one with the push of r24, and later increased by 1 again using pop.
+
+### L6: What happens to SP on ret?
+
+"Goes back" to its previous value, which is stored in another location.
+E.g. in my execution it goes from 40e9 back to 40eb
+
+### L7: Comment out ldi r24, 0/1, what happens?
+
+Initializing my variables sets r24 to 0b00000010, meaning when checkbutton
+is executed, the return value will be two, making the LED blink.

@@ -26,4 +26,10 @@ to register the movement.
 
 The code takes this into account by checking both prevstate and entrystate upon exit.
 
+### LQ4: Is it registered if moving fast?
+
+No, it is not. Yes, kinda weird. Reason for not registering is probably the microprocessor is busy
+executing another function, does not polling the state of sensors "all the time." Limitation when
+polling is that we might miss an event if we are polling too many things simultaneously. 
+
 

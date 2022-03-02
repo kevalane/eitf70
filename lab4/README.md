@@ -32,4 +32,27 @@ No, it is not. Yes, kinda weird. Reason for not registering is probably the micr
 executing another function, does not polling the state of sensors "all the time." Limitation when
 polling is that we might miss an event if we are polling too many things simultaneously. 
 
+### HA3: What PCINT?
 
+PC6: PCINT22
+PC7: PCINT23
+
+### HA4: Enable PCINT?
+
+`PCMSK2 = 0b11000000;`
+
+### HA5: How to enable on PCICR?
+
+`PCICR = 0b0100`
+
+### LQ5: Value of counter?
+
+The value of the counter is 4.
+
+### LQ6: Disadvantage using interrupts
+
+I guess we cannot 'not' interrupt, meaning if we currently execute a method that we really need to 
+execute, and then an interrupt happens, issues arise. What happens if an interrupt is interrupted?
+Generally difficult to get various pieces to work well with each other. Can we know what part is executed
+before interrupt? I don't know, maybe with the stack pointer? is it affected? can we store our prev
+location within the interrupt service?

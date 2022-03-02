@@ -2,7 +2,7 @@
 #include <math.h>
 
 int cpu_freq = 16000000;
-double wanted_delay = 0.2;
+double wanted_delay = 1;
 
 int calcDelayConstant(int cycleCount) {
 	double exponent = log(cycleCount/4.0)/3.0;
